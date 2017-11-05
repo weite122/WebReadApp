@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Reader</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="root" class="container">
+    	<div class="m-artical-action">
+    		<div class="artical-action-mid" id="action_mid"></div><!-- 用于中间点击唤醒上下边栏，命名时候加个mid有利于以后家需求 -->
+    	</div>
+        <div id="top-nav" class="top-nav" style="display: none;">
+        	<div class="icon-back"></div>
+        	<div class="nav-title">返回书架</div>
+        </div>
+        <div id="fition_chapter_title"></div>
+        <div id="fition_container" class="m-read-content">
+            <h4>灵根育孕源流出</h4>
+        	<p>诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+               诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+            </p>
+            <p>诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+               诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+            </p>
+            <p>诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+               诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+            </p>
+            <p>诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+               诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+            </p>
+            <p>诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+               诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
+　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
+            </p>
+        </div><!--命名要有实际意义，m代表模块,小说内容采用爬取-->
+        <div class="m-button-bar">
+        	<ul class="u-tab"><!--翻页按钮，按钮会有相应事件，所以li用id去标识-->
+        		<li id="prev_button">上一章</li>
+        		<li id="next_button">下一章</li>
+        	</ul>
+        </div>
+        <div class="nav-pannel-bk font-container" style="display: none;"></div><!--因为背景是透明的，文字不透明，所以设置了一个平行的层，其实还可以用rgba()不会导致子元素变透明-->
+        <div class="nav-pannel font-container" id="font-container" style="display: none;">
+        	<div class="child-mod">
+        		<span>字号</span>
+        		<button id="large-button" class="font-size-button">大</button>
+        		<button id="small-button" class="font-size-button">小</button>
+        	</div>
+        	<div class="child-mod">
+        		<span>背景</span>
+        		<div class="bk-container-white">
+        			<div class="bk-container-current"></div>
+        		</div>
+        		<div class="bk-container-normal">
+        			<div class="bk-container-current"></div>
+        		</div>
+        		<div class="bk-container-gray">
+        			<div class="bk-container-current"></div>
+        		</div>
+        		<div class="bk-container">
+        			<div class="bk-container-current"></div>
+        		</div>
+        		<div class="bk-container">
+        			<div class="bk-container-current"></div>
+        		</div>
+        	</div>
+        </div>
+        <div class="bottom-nav-bk bottom_nav" style="display: none"></div>
+        <div id="bottom-nav" class="bottom-nav bottom_nav" style="display: none;"><!--没有必要写在CSS里面，因为显隐都是通过JS改变-->
+        	<div class="item" id="category-button">
+        		<div class="item-wrap">
+        			<div class="icon-category"></div>
+        			<div class="category-title">目录</div>
+        		</div>
+        	</div>
+        	<div class="item" id="font-button">
+        		<div class="item-wrap">
+        			<div class="icon-font"></div>
+        			<div class="font-title">字体</div>
+        		</div>
+        	</div>
+        	<div class="item" id="night-button">
+        		<div class="item-wrap" id="day_icon">
+        			<div class="icon-day"></div>
+        			<div class="day-title">白天</div>
+        		</div>	
+        		<div class="item-wrap" id="night_icon" style="display: none">
+        			<div class="icon-night"></div>
+        			<div class="night-title">夜间</div>
+        		</div>
+        	</div> 	
+        </div>
+    	
+    </div>
+    <script src="lib/zepto.min.js"></script><!-- zepto更适合移动端，比jquery轻量，用法几乎一样 -->
+		<script>
+			window.jQuery = $;//保证后面两个插件不会冲突
+		</script>
+		<script src="js/jquery.base64.js"></script><!--支持数据解码-->
+		<script src="js/jquery.jsonp.js"></script>
+		<script type="text/javascript">
+		    //开发过程需求会不断改，不可能一开始与最后框架一样
+		    (function() {
+		    	var Util = (function() {//封装方法
+		    		/*该方法为H5在存储上提供了支持*/
+		    		// 防止key被覆盖,防止同个域名下，他人误操作了localstorage,加了前缀
+		    		var prefix = 'html5_reader_';
+		    		var StorageGetter = function(key) {
+		    			return localStorage.getItem(prefix + key);
+		    		}
+		    		var StorageSetter = function(key, val) {
+		    			return localStorage.setItem(prefix + key, val);
+		    		}
+		    		//封装好由于调章节数据
+		    		var getBSONP = function(url, callback) {
+		    			return $.jsonp({
+		    				url: url,
+		    				cache: true,
+		    				callback: 'duokan_fiction_chapter',//与形参callback不一样，这个callback是请求回来的jsonp数据包里面的方法名
+		    				success: function(result) {//result就是jsonp数据包里面的被加密的数据
+		    					var data = $.base64.decode(result);//把加密的数据解码成json格式
+		    					var json = decodeURIComponent(escape(data));//再把json格式数据解码，后面两个方法是JS里面的
+		    					callback(data);
+		    				}
+		    			})//jsonp方法是插件上封装好的
+		    		}
+		    		return {//对象
+		    			getBSONP: getBSONP,
+		    			StorageGetter: StorageGetter,
+		    			StorageSetter: StorageSetter
+		    		}
+		    	})();
+
+		    	var Dom = {//声明常量以便多次引用,提高性能,多次使用的东西要提前调用且缓存，只用一次的没有必要
+		    		top_nav:$('#top-nav'),
+		    		bottom_nav: $('.bottom_nav'),
+		    		night_day_switch_button: $('#night-button'),
+		    		font_container: $('.font-container'),
+		    		font_button: $('#font-button')
+		    	}
+		    	var Win = $(window);
+		    	var Doc = $(document);
+		    	var RootContainer = $('#fition_container');
+		    	var initFontSize = 14;
+		    	var initFontSize = Util.StorageGetter('font_size');
+		    	initFontSize = parseInt(initFontSize);
+		    	if (!initFontSize) {
+		    		initFontSize = 14;
+		    	}
+		    	RootContainer.css('font-size', initFontSize);
+
+
+		    	function main() {
+		    		//todo 整个项目的入口函数
+		    		EventHandler();//调用
+		    		var readerModel = ReaderModel();
+		    		readerModel.init();
+		    	}
+
+
+		    	function ReaderModel() {
+		    		//todo 这是一个接口--实现和阅读器相关的数据交互方法，ajax请求，跨域数据请求，所有和服务器相关的放在这里
+		    		var Chapter_id;
+		    		var init = function() {//初始化函数调用顺序
+		    			getFictionInfo(function() {
+		    				getCurChapterContent(Chapter_id, function() {
+		    					//todo 拿到数据后数据层怎么跟UI层联络
+		    					//
+		    				});
+		    			});
+
+		    		}
+		    		var getFictionInfo = function(callback) {//数据要有回调才知道数据传给谁
+		    			$.get('data/chapter.json', function(data) {//获取的内容总体叫data
+		    				//todo 获得章节信息之后的回调函数
+		    				Chapter_id = data.chapters[0].chapter_id;
+		    				callback && callback();
+		    			}, 'json');
+		    		}
+		    		var getCurChapterContent = function(chapter_id, data) {
+		    			$.get('data/data' + chapter_id + '.json', function(data) {//拿到章节信息之后开始操作
+		    				if (data.result == 0) {//0是看不同后端人员定义的，这里0代表成功,服务器状态
+		    					var url = data.jsonp;//用jsonp跟base64格式的插件来解码jsonp返回已加密的数据；加密是为了防止数据被爬走
+		    					Util.getBSONP(url, function(data) {
+		    						callback && callback(data);//跟if结构有点像，a && b,if a is true ,then execute b,这里相当于if(callback) {callback(data);}
+		    					});
+
+		    				}
+
+		    			}, 'json');
+		    		}
+		    		return {
+		    			init: init
+		    		}
+
+		    	}
+
+		    	
+		    	function ReaderBaseFrame() {
+		    		//todo 渲染基本的UI结构
+		    	}
+
+		    	function EventHandler() {
+		    		//todo 交互的事件绑定
+		    		//点击唤出上下边栏，click比touch,zepto tap好一点，因为click兼容想要在PC端访问移动端网站的用户
+		    		$('#action_mid').click(function(){
+		    			if (Dom.top_nav.css('display') == 'none') {
+		    				Dom.bottom_nav.show();
+		    				Dom.top_nav.show();
+		    			} else {
+		    				Dom.bottom_nav.hide();
+		    				Dom.top_nav.hide();
+		    				Dom.font_container.hide();
+		    				Dom.font_button.removeClass('current');
+		    			}
+		    		});
+		    		Dom.font_button.click(function() {
+		    			if(Dom.font_container.css('display') == 'none') {
+		    				Dom.font_container.show();
+		    				Dom.font_button.addClass('current');
+		    			} else {
+		    				Dom.font_container.hide();
+		    				Dom.font_button.removeClass('current');
+		    			}
+
+		    		});
+
+		    		Dom.night_day_switch_button.click(function() {
+		    			//todo 触发背景切换事件
+		    			if ($('#day_icon').css('display') == 'block') {
+		    				$('#day_icon').css('display', 'none');
+		    				$('#night_icon').css('display', 'block');
+		    				$('body').css('background', '#000');		    				
+		    			} else {
+		    				$('#night_icon').css('display', 'none');
+		    				$('#day_icon').css('display', 'block');
+		    				$('body').css('background-color', '#e9dfc7');
+		    			}
+		    		});
+
+		    		$('#large-button').click(function() {
+		    			if (initFontSize > 20) {
+		    				return;
+		    			}
+		    			initFontSize += 1;
+		    			RootContainer.css('font-size', initFontSize);
+		    			Util.StorageSetter('font_size', initFontSize);//font_size是我们起的key
+
+		    		});
+
+		    		$('#small-button').click(function() {
+		    			if (initFontSize < 12) {
+		    				return;
+		    			}
+		    			initFontSize -= 1;
+		    			RootContainer.css('font-size', initFontSize);
+		    			Util.StorageSetter('font_size', initFontSize);
+		    		});
+
+		    		//背景颜色切换
+		    		$('.bk-container-white').click(function() {
+		    			$('body').css('background', '#fff');
+		    		});
+		    		$('.bk-container-normal').click(function() {
+		    			$('body').css('background', '#e9dfc7');
+		    		});
+		    		$('.bk-container-gray').click(function() {
+		    			$('body').css('background', 'gray');
+		    		});
+
+		    		Win.scroll(function() {//window本身的滚动事件
+		    			Dom.bottom_nav.hide();
+		    			Dom.top_nav.hide();
+		    			Dom.font_container.hide();
+		    		    Dom.font_button.removeClass('current');
+		    		});
+		    	}
+
+		    	main();//先把main函数调用出来
+
+
+
+		    })();
+			
+		</script>
+</body>
+</html>
