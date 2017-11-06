@@ -3,7 +3,22 @@
 <head>
 	<title>Reader</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+	<script>
+		var scale = 1 / window.devicePixelRatio // 1\2\3
+		document.write(`
+		  <meta name="viewport"
+			content="initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no"> 
+		  `)
+	  </script>
+	  <script>
+		var width = document.documentElement.clientWidth / window.devicePixelRatio
+		var css = `
+		html{
+		  font-size: ${width / 10 * window.devicePixelRatio}px;
+		}
+		`
+		document.write(`<style>${css}</style>`)
+	  </script>
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" href="css/index.css">
@@ -111,7 +126,7 @@
 		</script>
 		<script src="js/jquery.base64.js"></script><!--支持数据解码-->
 		<script src="js/jquery.jsonp.js"></script>
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 		    //开发过程需求会不断改，不可能一开始与最后框架一样
 		    (function() {
 		    	var Util = (function() {//封装方法
@@ -295,6 +310,6 @@
 
 		    })();
 			
-		</script>
+		</script> -->
 </body>
 </html>
