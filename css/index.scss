@@ -36,6 +36,16 @@ body {
     }
 }
 
+.m-artical-action {
+    .artical-action-mid {
+        position: fixed;
+        z-index: 3;
+        width: 100%;
+        height: 40%;
+        top: 30%;
+    }
+}
+
 .m-button-bar {
     width: 70%;
     max-width: rem(800);/*防止因为在大的浏览器里面浏览，70%过短不够美观*/
@@ -241,22 +251,5 @@ body {
 }*/
 
 
-// .artical-action-mid {
-//     position: fixed;
-//     z-index: 3;
-//     width: 100%;
-//     height: 40%;
-//     top: 30%;
-// }
 
-// .m-button-bar button{
-//     background: none;
-//     border:1px solid #000;
-//     padding:  5px 10px;
-// }
 
-/* .item-wrap{
-    width: 26px;
-    margin: 0 auto;
-    position: relative;
-} */
