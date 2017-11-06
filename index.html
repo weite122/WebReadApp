@@ -85,10 +85,10 @@
         		<div class="bk-container-gray">
         			<div class="bk-container-current"></div>
         		</div>
-        		<div class="bk-container">
+        		<div class="bk-container-green">
         			<div class="bk-container-current"></div>
         		</div>
-        		<div class="bk-container">
+        		<div class="bk-container-blue">
         			<div class="bk-container-current"></div>
         		</div>
         	</div>
@@ -97,23 +97,31 @@
         <div id="bottom-nav" class="bottom-nav bottom_nav" style="display: none;"><!--没有必要写在CSS里面，因为显隐都是通过JS改变-->
         	<div class="item" id="category-button">
         		<div class="item-wrap">
-        			<div class="icon-category"></div>
+        			<div class="icon-category">                
+                        <svg><use xlink:href="#icon-category"></use></svg>
+                    </div>
         			<div class="category-title">目录</div>
         		</div>
         	</div>
         	<div class="item" id="font-button">
         		<div class="item-wrap">
-        			<div class="icon-font"></div>
+        			<div class="icon-font">
+                        <svg><use xlink:href="#icon-font"></use></svg>
+                    </div>
         			<div class="font-title">字体</div>
         		</div>
         	</div>
         	<div class="item" id="night-button">
-        		<div class="item-wrap" id="day_icon">
-        			<div class="icon-day"></div>
+        		<div class="item-wrap" id="day_icon" style="display: none">
+        			<div class="icon-day">
+                        <svg><use xlink:href="#icon-sun"></use></svg>
+                    </div>
         			<div class="day-title">白天</div>
         		</div>	
-        		<div class="item-wrap" id="night_icon" style="display: none">
-        			<div class="icon-night"></div>
+        		<div class="item-wrap" id="night_icon">
+        			<div class="icon-night">
+                        <svg><use xlink:href="#icon-night"></use></svg>
+                    </div>
         			<div class="night-title">夜间</div>
         		</div>
         	</div> 	
@@ -121,6 +129,7 @@
     	
     </div>
     <script src="lib/zepto.min.js"></script>
+    <script src="//at.alicdn.com/t/font_466225_vg14m904y78hbyb9.js"></script>
 		<script>
 			window.jQuery = $;
 		</script>
@@ -146,7 +155,10 @@
 		    	})();
 		    	let Dom = {//声明常量以便多次引用,提高性能,多次使用的东西要提前调用且缓存，只用一次的没有必要
 		    		top_nav:$('#top-nav'),
-		    		bottom_nav: $('.bottom_nav')
+		    		bottom_nav: $('.bottom_nav'),
+                    night_day_switch_button: $('#night-button'),
+		    		font_container: $('.font-container'),
+		    		font_button: $('#font-button')
 		    	}
                 let Win = $(window)
                 let Doc = $(document)
@@ -166,18 +178,33 @@
 		    		//todo 交互的事件绑定
 		    		//点击唤出上下边栏，click比touch,zepto tap好一点，因为click兼容想要在PC端访问移动端网站的用户
 		    		$('#action_mid').click(function(){
-		    			if (Dom.top_nav.css('display') == 'none') {
+		    			if (Dom.top_nav.css('display') === 'none') {
 		    				Dom.bottom_nav.show()
 		    				Dom.top_nav.show()
 		    			} else {
 		    				Dom.bottom_nav.hide()
 		    				Dom.top_nav.hide()
+                            Dom.font_container.hide()
 		    			}
-		    		});
+		    		})
 
+                    Dom.font_button.click(function(){
+                        if(Dom.font_container.css('display') === 'none'){
+                            Dom.font_container.show()
+                            Dom.font_button.addClass('active')
+                        } else {
+                            Dom.font_container.hide()
+                            Dom.font_button.removeClass('active')
+                        }
+                    })
+                    $('#night-button').click(function(){
+
+                    })
                     Win.scroll(function(){
                         Dom.bottom_nav.hide()
 		    			Dom.top_nav.hide()
+                        Dom.font_container.hide()
+                        Dom.font_button.removeClass('active')
                     })
 		    	}
                 main()
