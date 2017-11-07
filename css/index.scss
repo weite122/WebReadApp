@@ -151,7 +151,7 @@ body {
 
 .bk-container-white {
     @extend .bk-container-setting;
-    background-color: #fff;
+    background-color: #f7eee5;
 }
 .bk-container-normal {
     @extend .bk-container-setting;
@@ -159,15 +159,19 @@ body {
 }
 .bk-container-gray {
     @extend .bk-container-setting;
-    background-color: gray;
+    background-color: #a4a4a4;
 }
 .bk-container-green {
     @extend .bk-container-setting;
-    background-color: rgb(144, 207, 165);
+    background-color: #cdefce;
 }
 .bk-container-blue {
     @extend .bk-container-setting;
-    background-color: #388994;
+    background-color: #283548;
+}
+.bk-container-night {
+    @extend .bk-container-setting;
+    background-color: #000;
 }
 
 .bottom-nav-setting {

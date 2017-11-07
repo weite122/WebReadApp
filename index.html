@@ -76,24 +76,27 @@
         		<button id="large-button" class="font-size-button">大</button>
         		<button id="small-button" class="font-size-button">小</button>
         	</div>
-        	<div class="child-mod">
+        	<ul class="child-mod">
         		<span>背景</span>
-        		<div class="bk-container-white">
+        		<li class="bk-container-white">
         			<div class="bk-container-current"></div>
-        		</div>
-        		<div class="bk-container-normal">
+				</li>
+        		<li class="bk-container-normal">
         			<div class="bk-container-current"></div>
-        		</div>
-        		<div class="bk-container-gray">
+				</li>
+        		<li class="bk-container-gray">
         			<div class="bk-container-current"></div>
-        		</div>
-        		<div class="bk-container-green">
+				</li>
+        		<li class="bk-container-green">
         			<div class="bk-container-current"></div>
-        		</div>
-        		<div class="bk-container-blue">
+				</li>
+        		<li class="bk-container-blue">
         			<div class="bk-container-current"></div>
-        		</div>
-        	</div>
+				</li>
+				<li class="bk-container-night">
+        			<div class="bk-container-current"></div>
+        		</li>
+        	</ul>
         </div>
         <div class="bottom-nav-bk bottom_nav" style="display: none"></div>
         <div id="bottom-nav" class="bottom-nav bottom_nav" style="display: none;"><!--没有必要写在CSS里面，因为显隐都是通过JS改变-->
@@ -160,7 +163,8 @@
 		    		bottom_nav: $('.bottom_nav'),
                     night_day_switch_button: $('#night-button'),
 		    		font_container: $('.font-container'),
-		    		font_button: $('#font-button')
+		    		font_button: $('#font-button'),
+					color_button: $('.child-mod>li')
 		    	}
                 let Win = $(window)
                 let Doc = $(document)
@@ -197,6 +201,7 @@
 		    				Dom.bottom_nav.hide()
 		    				Dom.top_nav.hide()
                             Dom.font_container.hide()
+							Dom.font_button.removeClass('active')
 		    			}
 		    		})
 
@@ -210,10 +215,25 @@
                         }
                     })
                     $('#night-button').click(function(){
-
+		    			if ($('#day_icon').css('display') === 'block') {
+		    				$('#day_icon').css('display', 'none');
+		    				$('#night_icon').css('display', 'block');
+		    				$('body').css('background','#e9dfc7');		    				
+		    			} else {
+		    				$('#night_icon').css('display', 'none');
+		    				$('#day_icon').css('display', 'block');
+		    				$('body').css('background-color', '#000');
+		    			}
                     })
+
+		    		//背景颜色切换
+					Dom.color_button.click(function(){
+						let bodyColor = $(this).css('background-color')
+						$('body').css('background', bodyColor);
+					})
+
 					$('#large-button').click(function(){
-						if(initFontSize > 40){
+						if(initFontSize > 20 * window.devicePixelRatio){
 							return
 						}
 						initFontSize += 1
@@ -221,7 +241,7 @@
 						Util.StorageSetter('font-size',initFontSize)
 					})
 					$('#small-button').click(function(){
-						if(initFontSize < 24){
+						if(initFontSize < 12 * window.devicePixelRatio){
 							return
 						}
 						initFontSize -= 1
