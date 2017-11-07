@@ -34,8 +34,8 @@
 			</div>
         	<div class="nav-title">返回书架</div>
         </div>
-        <div id="fition_chapter_title"></div>
-        <div id="fition_container" class="m-read-content">
+        <div id="fiction_chapter_title"></div>
+        <div id="fiction_container" class="m-read-content">
             <h4>灵根育孕源流出</h4>
         	<p>诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。
 　　           覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。
@@ -164,6 +164,16 @@
 		    	}
                 let Win = $(window)
                 let Doc = $(document)
+			    let RootContainer = $('#fiction_container')
+				let initFontSize
+				initFontSize = Util.StorageGetter('font-size',initFontSize)
+				initFontSize = parseInt(initFontSize)
+				
+				if(!initFontSize){
+					initFontSize = 14 * window.devicePixelRatio 
+				}
+				RootContainer.css('font-size',initFontSize)
+				
 		    	function main() {
 		    		//todo 整个项目的入口函数
 		    		EventHandler()
@@ -202,6 +212,22 @@
                     $('#night-button').click(function(){
 
                     })
+					$('#large-button').click(function(){
+						if(initFontSize > 40){
+							return
+						}
+						initFontSize += 1
+						RootContainer.css('font-size',initFontSize)
+						Util.StorageSetter('font-size',initFontSize)
+					})
+					$('#small-button').click(function(){
+						if(initFontSize < 24){
+							return
+						}
+						initFontSize -= 1
+						RootContainer.css('font-size',initFontSize)
+						Util.StorageSetter('font-size',initFontSize)
+					})
                     Win.scroll(function(){
                         Dom.bottom_nav.hide()
 		    			Dom.top_nav.hide()
