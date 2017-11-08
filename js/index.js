@@ -44,13 +44,13 @@
     let readerModel
     let readerUI
     initFontSize = Util.StorageGetter('font-size',initFontSize)
-    initFontSize = parseInt(initFontSize)
-    
+    initFontSize = parseInt(initFontSize)    
     if(!initFontSize){
         initFontSize = 14 * window.devicePixelRatio 
     }
     RootContainer.css('font-size',initFontSize)
     
+
     function main() {
         //todo 整个项目的入口函数
         EventHandler()
@@ -75,7 +75,11 @@
         let getFictionInfo = function(callback){
             $.get('data/chapter.json',function(data){
                 //TODO 获得章节信息的回调
-                Chapter_id = data.chapters[1].chapter_id
+                Chapter_id = Util.StorageGetter('CurrentChapterId',Chapter_id)
+                Chapter_id = parseInt(Chapter_id)  
+                if(!Chapter_id){
+                    Chapter_id = data.chapters[1].chapter_id
+                }
                 ChapterTotal = data.chapters.length
                 callback && callback()
             },'json')
@@ -97,6 +101,7 @@
                 return
             }
             Chapter_id -= 1;
+            Util.StorageSetter('CurrentChapterId',Chapter_id)
             getCurrentChapterContent(Chapter_id,UIcallback) 
         }
 
@@ -106,6 +111,7 @@
                return
             }
             Chapter_id +=  1;
+            Util.StorageSetter('CurrentChapterId',Chapter_id)
             getCurrentChapterContent(Chapter_id,UIcallback) 
         }
 
