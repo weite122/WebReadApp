@@ -40,10 +40,9 @@
     let Win = $(window)
     let Doc = $(document)
     let RootContainer = $('#fiction_container')
-    let initFontSize
     let readerModel
     let readerUI
-    initFontSize = Util.StorageGetter('font-size',initFontSize)
+    let initFontSize = Util.StorageGetter('font-size')
     initFontSize = parseInt(initFontSize)    
     if(!initFontSize){
         initFontSize = 14 * window.devicePixelRatio 
@@ -66,35 +65,47 @@
         let Chapter_id
         let ChapterTotal
         let init = function(UIcallback){
-            getFictionInfo(function(){
-                getCurrentChapterContent(Chapter_id,function(data){
-                    UIcallback && UIcallback(data)
-                })
+            getFictionInfoPromise().then(function(d){
+                return getCurrentChapterContentPromise()
+            }).then(function(data){
+                UIcallback && UIcallback(data)
             })
         }
-        let getFictionInfo = function(callback){
-            $.get('data/chapter.json',function(data){
-                //TODO 获得章节信息的回调
-                Chapter_id = Util.StorageGetter('CurrentChapterId',Chapter_id)
-                Chapter_id = parseInt(Chapter_id)  
-                if(!Chapter_id){
-                    Chapter_id = data.chapters[1].chapter_id
-                }
-                ChapterTotal = data.chapters.length
-                callback && callback()
-            },'json')
-        }
-        let getCurrentChapterContent = function(chapter_id,callback){
-            $.get('data/data' + chapter_id + '.json',function(data){
-                if(data.result === 0){
-                    let url = data.jsonp
-                    Util.getBSONP(url,function(data){
-                        callback && callback(data)
-                    })
-                } 
-            },'json')
+
+        let getFictionInfoPromise = function(){
+            return new Promise(function(resolve,reject){
+                $.get('data/chapter.json',function(data){
+                    //TODO 获得章节信息的回调
+                    if(data.result ===0){
+                        Chapter_id = Util.StorageGetter('CurrentChapterId')
+                        Chapter_id = parseInt(Chapter_id)  
+                        if(!Chapter_id){
+                            Chapter_id = data.chapters[1].chapter_id
+                        }
+                        ChapterTotal = data.chapters.length
+                        resolve()
+                    }else {
+                        reject()
+                    }
+                },'json')  
+            })
         }
 
+        let getCurrentChapterContentPromise = function(){
+            return new Promise(function(resolve,reject){
+                $.get('data/data' + Chapter_id + '.json',function(data){
+                    if(data.result === 0){
+                        let url = data.jsonp
+                        Util.getBSONP(url,function(data){
+                            // callback && callback(data)
+                            resolve(data)
+                        })
+                    } else {
+                        reject({message:'fail'})
+                    }
+                },'json')
+            })
+        }
         let preChapter = function(UIcallback){
             Chapter_id = parseInt(Chapter_id,10)
             if(Chapter_id === 0){
