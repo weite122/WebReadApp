@@ -19,7 +19,7 @@
                 success : function(result){
                     let data = $.base64.decode(result)
                     let json = decodeURIComponent(escape(data))
-                    callback(data)
+                    callback(json)
                 }
             })
         }
@@ -53,16 +53,19 @@
         //todo 整个项目的入口函数
         EventHandler()
         let readerModel = ReaderModel()
-        readerModel.init()
+        let readerUI = ReaderBaseFrame(RootContainer)
+        readerModel.init(function(data){
+            readerUI(data)
+        })
     }
 
     function ReaderModel() {
         //todo 这是一个接口--实现和阅读器相关的数据交互方法，ajax请求，跨域数据请求，所有和服务器相关的放在这里
         let Chapter_id
-        let init = function(){
+        let init = function(UIcallback){
             getFictionInfo(function(){
                 getCurrentChapterContent(Chapter_id,function(data){
-
+                    UIcallback && UIcallback(data)
                 })
             })
         }
@@ -73,13 +76,12 @@
                 callback && callback()
             },'json')
         }
-        let getCurrentChapterContent = function(chapter_id,data){
+        let getCurrentChapterContent = function(chapter_id,callback){
             $.get('data/data' + chapter_id + '.json',function(data){
                 if(data.result === 0){
                     let url = data.jsonp
                     Util.getBSONP(url,function(data){
-                        // console.log(callback)
-                        // callback && callback(data)
+                        callback && callback(data)
                     })
                 }
             },'json')
@@ -88,8 +90,20 @@
             init : init
         }
     }
-    function ReaderBaseFrame() {
+    function ReaderBaseFrame(container) {
         //todo 渲染基本的UI结构
+        function parseChapterData(jsonData){
+            let jsonObj = JSON.parse(jsonData)
+            let html = '<h4>' + jsonObj.t + '</h4>'
+            for(let i = 0; i < jsonObj.p.length; i++){
+                html += '<p>' +jsonObj.p[i] +'<p>'
+            }
+            return html
+        }
+        return function(data){
+            container.html(parseChapterData(data))
+        }
+        
     }
 
     function EventHandler() {
