@@ -41,6 +41,8 @@
     let Doc = $(document)
     let RootContainer = $('#fiction_container')
     let initFontSize
+    let readerModel
+    let readerUI
     initFontSize = Util.StorageGetter('font-size',initFontSize)
     initFontSize = parseInt(initFontSize)
     
@@ -52,8 +54,8 @@
     function main() {
         //todo 整个项目的入口函数
         EventHandler()
-        let readerModel = ReaderModel()
-        let readerUI = ReaderBaseFrame(RootContainer)
+        readerModel = ReaderModel()
+        readerUI = ReaderBaseFrame(RootContainer)
         readerModel.init(function(data){
             readerUI(data)
         })
@@ -62,6 +64,7 @@
     function ReaderModel() {
         //todo 这是一个接口--实现和阅读器相关的数据交互方法，ajax请求，跨域数据请求，所有和服务器相关的放在这里
         let Chapter_id
+        let ChapterTotal
         let init = function(UIcallback){
             getFictionInfo(function(){
                 getCurrentChapterContent(Chapter_id,function(data){
@@ -73,6 +76,7 @@
             $.get('data/chapter.json',function(data){
                 //TODO 获得章节信息的回调
                 Chapter_id = data.chapters[1].chapter_id
+                ChapterTotal = data.chapters.length
                 callback && callback()
             },'json')
         }
@@ -83,11 +87,32 @@
                     Util.getBSONP(url,function(data){
                         callback && callback(data)
                     })
-                }
+                } 
             },'json')
         }
+
+        let preChapter = function(UIcallback){
+            Chapter_id = parseInt(Chapter_id,10)
+            if(Chapter_id === 0){
+                return
+            }
+            Chapter_id -= 1;
+            getCurrentChapterContent(Chapter_id,UIcallback) 
+        }
+
+        let nextChapter = function(UIcallback){
+            Chapter_id = parseInt(Chapter_id,10)
+            if(Chapter_id === ChapterTotal){
+               return
+            }
+            Chapter_id +=  1;
+            getCurrentChapterContent(Chapter_id,UIcallback) 
+        }
+
         return {
-            init : init
+            init : init,
+            preChapter : preChapter,
+            nextChapter : nextChapter
         }
     }
     function ReaderBaseFrame(container) {
@@ -170,6 +195,19 @@
             Dom.font_container.hide()
             Dom.font_button.removeClass('active')
         })
+
+        $('#prev_button').click(function(){
+            readerModel.preChapter(function(data){
+                readerUI(data)
+            })
+        })
+
+        $('#next_button').click(function(){
+            readerModel.nextChapter(function(data){
+                readerUI(data)
+            })
+        })
+
     }
     main()
 })();
