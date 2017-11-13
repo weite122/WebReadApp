@@ -21,14 +21,52 @@ app.use(controller.get('/router_test',function*(){
     this.body = 'hello koa!'
 }))
 
-app.use(controller.get('/ejs_test',function*(){cd 
+app.use(controller.get('/ejs_test',function*(){
     this.set('Cache-Control','no-cache')
     this.body = yield render('test',{title:'title_test'})
-}))//generator
+}))
 
 app.use(controller.get('/api_test',function*(){
     this.set('Cache-Control','no-cache')
     this.body = service.get_test_data()
+}))
+
+app.use(controller.get('/',function*(){ 
+    this.set('Cache-Control','no-cache')
+    this.body = yield render('index',{title:'书城首页'})
+}))
+
+app.use(controller.get('/search',function*(){ 
+    this.set('Cache-Control','no-cache')
+    this.body = yield render('index',{title:'搜索页面'})
+}))
+
+app.use(controller.get('/category',function*(){ 
+    this.set('Cache-Control','no-cache')
+    this.body = yield render('category',{title:'分类页面'})
+}))
+
+app.use(controller.get('/male',function*(){ 
+    this.set('Cache-Control','no-cache')
+    this.body = yield render('male',{title:'男性频道'})
+}))
+
+app.use(controller.get('/female',function*(){ 
+    this.set('Cache-Control','no-cache')
+    this.body = yield render('female',{title:'女性频道'})
+}))
+
+app.use(controller.get('/rank',function*(){ 
+    this.set('Cache-Control','no-cache')
+    this.body = yield render('rank',{title:'排行'})
+}))
+
+app.use(controller.get('/book',function*(){ 
+    this.set('Cache-Control','no-cache')
+	var querystring = require('querystring')
+	var params = querystring.parse(this.req._parsedUrl.query)
+    var bookId = params.id
+    this.body = yield render('book',{bookId:bookId})
 }))
 
 app.use(controller.get('/ajax/index', function*(){
