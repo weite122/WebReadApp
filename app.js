@@ -32,5 +32,20 @@ app.use(controller.get('/api_test',function*(){
 }))
 
 
+
+app.use(controller.get('/ajax/search', function*(){
+	this.set('Cache-Control', 'no-cache');
+	var querystring = require('querystring');
+	var _this = this;
+	var params = querystring.parse(this.req._parsedUrl.query);//将HTTPquerystring转化为obj形式
+    var start = params.start;
+    var end = params.end;
+    var keyword = params.keyword;
+	this.body = yield service.get_search_data(start, end, keyword);//因为异步返回，所以前面想要yield
+}));
+
+
 app.listen(3001)
 console.log('koa server is started!')
+
+
