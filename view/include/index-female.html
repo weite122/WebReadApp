@@ -1,23 +1,4 @@
-<style>
-    .channel-h5__footer_next {
-        border-top: 1px solid #f0f0f0;
-        overflow: hidden;
-    }
-
-    .channel-h5__footer_next>a {
-        float: left;
-        width: 50%;
-        padding: 14px;
-        font: 13px/1.3em a;
-        color: rgba(0, 0, 0, 0.9);
-        text-align: center;
-        box-sizing: border-box;
-    }
-
-    .channel-h5__footer_next>a:first-child {
-        border-right: 1px solid #f0f0f0;
-    }
-</style>
+<!DOCTYPE HTML5>
 <section class="channel-h5">
     <div class="channel-h5__header">
         <p class="channel-h5__title">
@@ -27,18 +8,18 @@
     <div>
         <div>
             <ul class="list-h5">
-                <li>
+                <li v-for="item in female" v-if="$index===0">
                     <div class="book-h5">
                         <div class="book-h5__cover">
-                            <img src="" alt="">
+                            <img v-bind:src="item.cover" alt="{{ item.title }}">
                             <p class="book-h5__finish">完结</p>
                         </div>
                         <div class="book-h5__info">
-                            <p class="book-h5__title">书名</p>
-                            <p class="book-h5__author">作者</p>
-                            <p class="book-h5__summary">简介</p>
+                            <p class="book-h5__title">{{ item.title }}</p>
+                            <p class="book-h5__author">{{ item.authors }}</p>
+                            <p class="book-h5__summary">{{ item.summary }}</p>
                             <div class="book-h5__wrap">
-                                <div class="book-h5__tag">标签</div>
+                                <div class="book-h5__tag" v-for="tag in item.tags">{{ tag }}</div>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+<!DOCTYPE HTML5>
 <section class="channel-h5">
     <div class="channel-h5__header">
         <p class="channel-h5__title">
@@ -5,21 +6,21 @@
         </p>
     </div>
     <ul class="list-h5">
-        <li>
-            <div class="book-h5">
-                <div class="book-h5__cover">
-                    <img src="" alt="">
-                    <p class="book-h5__finish">完结</p>
-                </div>
-                <div class="book-h5__info">
-                    <p class="book-h5__title">书名</p>
-                    <p class="book-h5__author">作者</p>
-                    <p class="book-h5__summary">简介</p>
-                    <div class="book-h5__wrap">
-                        <div class="book-h5__tag">标签</div>
+            <li v-for="item in hot" v-if="$index===0">
+                <div class="book-h5">
+                    <div class="book-h5__cover">
+                        <img v-bind:src="item.cover" alt="{{ item.title }}">
+                        <p class="book-h5__finish">完结</p>
+                    </div>
+                    <div class="book-h5__info">
+                        <p class="book-h5__title">{{ item.title }}</p>
+                        <p class="book-h5__author">{{ item.authors }}</p>
+                        <p class="book-h5__summary">{{ item.summary }}</p>
+                        <div class="book-h5__wrap">
+                            <div class="book-h5__tag" v-for="tag in item.tags">{{ tag }}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
 </section>
