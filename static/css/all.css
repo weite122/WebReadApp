@@ -447,7 +447,12 @@
     height: 130px;
 }  
 /* index样式 */
-#root {
+#app {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.container{
     height: 100%;
     width: 100%;
     overflow: hidden;
