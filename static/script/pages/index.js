@@ -16,9 +16,21 @@ $.get('/ajax/index',function(d){
             tab_1_class:'Swipe-tab__on',
             tab_2_class:''
         },
-        method:{
-            tabSwitch:function(){
-
+        methods:{
+            tabSwitch:function(pos){
+               this.duration = 0.5;
+               this.header_duration = 0.5;
+               if(pos === 0){
+                   this.position = 0;
+                   this.header_position = 0;
+                   this.tab_1_class = "Swipe-tab__on";
+                   this.tab_2_class = "";
+               }else{
+                    this.position = -734;
+                    this.header_position = 277;
+                    this.tab_1_class = "Swipe-tab__on";
+                    this.tab_2_class = "";
+               }
             }
         }
     })
