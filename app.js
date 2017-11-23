@@ -66,7 +66,7 @@ app.use(controller.get('/book',function*(){
 	var querystring = require('querystring')
 	var params = querystring.parse(this.req._parsedUrl.query)
     var bookId = params.id
-    this.body = yield render('book',{bookId:bookId})
+    this.body = yield render('book',{nav:'书籍详情',bookId:bookId})
 }))
 
 app.use(controller.get('/ajax/index', function*(){
