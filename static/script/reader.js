@@ -74,7 +74,7 @@
 
         let getFictionInfoPromise = function(){
             return new Promise(function(resolve,reject){
-                $.get('data/chapter.json',function(data){
+                $.get('ajax/chapter',function(data){
                     //TODO 获得章节信息的回调
                     if(data.result ===0){
                         Chapter_id = Util.StorageGetter('CurrentChapterId')
@@ -93,7 +93,9 @@
 
         let getCurrentChapterContentPromise = function(){
             return new Promise(function(resolve,reject){
-                $.get('data/data' + Chapter_id + '.json',function(data){
+                $.get('ajax/chapter_data',{
+                    id:Chapter_id
+                },function(data){
                     if(data.result === 0){
                         let url = data.jsonp
                         Util.getBSONP(url,function(data){

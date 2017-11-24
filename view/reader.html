@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Reader</title>
+	<meta charset="utf-8">
+	<script>
+		var scale = 1 / window.devicePixelRatio // 1\2\3
+		document.write(`
+		  <meta name="viewport"
+			content="initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no"> 
+		  `)
+	  </script>
+	  <script>
+		var width = document.documentElement.clientWidth / window.devicePixelRatio
+		var css = `
+		html{
+		  font-size: ${width / 10 * window.devicePixelRatio}px;
+		}
+		`
+		document.write(`<style>${css}</style>`)
+	  </script>
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="static/css/reset.css">
+	<link rel="stylesheet" href="static/css/reader.css">
+</head>
+<body>
+    <div id="root" class="container">
+    	<div class="m-artical-action">
+    		<div class="artical-action-mid" id="action_mid"></div><!-- 用于中间点击唤醒上下边栏，命名时候加个mid有利于以后家需求 -->
+    	</div>
+        <div id="top-nav" class="top-nav" style="display: none;">
+        	<div class="icon-back">
+				<svg><use xlink:href="#icon-arrowleft"></use></svg>
+			</div>
+        	<div class="nav-title">返回书架</div>
+        </div>
+        <div id="fiction_chapter_title"></div>
+        <div id="fiction_container" class="m-read-content">
+
+        </div><!--命名要有实际意义，m代表模块,小说内容采用爬取-->
+        <div class="m-button-bar">
+        	<ul class="u-tab"><!--翻页按钮，按钮会有相应事件，所以li用id去标识-->
+        		<li id="prev_button">上一章</li>
+        		<li id="next_button">下一章</li>
+        	</ul>
+        </div>
+        <div class="nav-pannel-bk font-container" style="display: none;"></div><!--因为背景是透明的，文字不透明，所以设置了一个平行的层，其实还可以用rgba()不会导致子元素变透明-->
+        <div class="nav-pannel font-container" id="font-container" style="display: none;">
+        	<div class="child-mod">
+        		<span>字号</span>
+        		<button id="large-button" class="font-size-button">大</button>
+        		<button id="small-button" class="font-size-button">小</button>
+        	</div>
+        	<ul class="child-mod">
+        		<span>背景</span>
+        		<li class="bk-container-white">
+        			<div class="bk-container-current"></div>
+				</li>
+        		<li class="bk-container-normal">
+        			<div class="bk-container-current"></div>
+				</li>
+        		<li class="bk-container-gray">
+        			<div class="bk-container-current"></div>
+				</li>
+        		<li class="bk-container-green">
+        			<div class="bk-container-current"></div>
+				</li>
+        		<li class="bk-container-blue">
+        			<div class="bk-container-current"></div>
+				</li>
+				<li class="bk-container-night">
+        			<div class="bk-container-current"></div>
+        		</li>
+        	</ul>
+        </div>
+        <div class="bottom-nav-bk bottom_nav" style="display: none"></div>
+        <div id="bottom-nav" class="bottom-nav bottom_nav" style="display: none;"><!--没有必要写在CSS里面，因为显隐都是通过JS改变-->
+        	<div class="item" id="category-button">
+        		<div class="item-wrap">
+        			<div class="icon-category">                
+                        <svg><use xlink:href="#icon-category"></use></svg>
+                    </div>
+        			<div class="category-title">目录</div>
+        		</div>
+        	</div>
+        	<div class="item" id="font-button">
+        		<div class="item-wrap">
+        			<div class="icon-font">
+                        <svg><use xlink:href="#icon-font"></use></svg>
+                    </div>
+        			<div class="font-title">字体</div>
+        		</div>
+        	</div>
+        	<div class="item" id="night-button">
+        		<div class="item-wrap" id="day_icon" style="display: none">
+        			<div class="icon-day">
+                        <svg><use xlink:href="#icon-sun"></use></svg>
+                    </div>
+        			<div class="day-title">白天</div>
+        		</div>	
+        		<div class="item-wrap" id="night_icon">
+        			<div class="icon-night">
+                        <svg><use xlink:href="#icon-night"></use></svg>
+                    </div>
+        			<div class="night-title">夜间</div>
+        		</div>
+        	</div> 	
+        </div>
+    	
+    </div>
+    <script src="static/script/zepto.js"></script>
+    <script src="//at.alicdn.com/t/font_466225_vg14m904y78hbyb9.js"></script>
+		<script>
+			window.jQuery = $;
+		</script>
+		<script src="static/script/jquery.base64.js"></script>
+		<script src="static/script/jquery.jsonp.js"></script>
+		<script src="static/script/reader.js"></script>
+</body>
+</html>

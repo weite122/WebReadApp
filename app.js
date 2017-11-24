@@ -41,6 +41,11 @@ app.use(controller.get('/search',function*(){
     this.body = yield render('index',{title:'搜索页面'})
 }))
 
+app.use(controller.get('/reader',function*(){ 
+    this.set('Cache-Control','no-cache')
+    this.body = yield render('reader')
+}))
+
 app.use(controller.get('/category',function*(){ 
     this.set('Cache-Control','no-cache')
     this.body = yield render('category',{title:'分类页面'})
@@ -105,15 +110,32 @@ app.use(controller.get('/ajax/book', function*(){
 	this.body = service.get_book_data(id)
 }))
 
+var querystring = require('querystring')
 app.use(controller.get('/ajax/search', function*(){
 	this.set('Cache-Control', 'no-cache')
-	var querystring = require('querystring')
 	var _this = this
 	var params = querystring.parse(this.req._parsedUrl.query)
     var start = params.start
     var end = params.end
     var keyword = params.keyword
 	this.body = yield service.get_search_data(start, end, keyword)//因为异步返回，所以前面想要yield
+}))
+
+
+app.use(controller.get('/ajax/chapter', function*(){
+	this.set('Cache-Control', 'no-cache')
+	this.body = service.get_chapter_data()
+}))
+
+app.use(controller.get('/ajax/chapter_data', function*(){
+	this.set('Cache-Control', 'no-cache')
+	var querystring = require('querystring')
+	var params = querystring.parse(this.req._parsedUrl.query)
+    var id = params.id
+    if(!id){
+        id = ''
+    }
+	this.body = service.get_chapter_content_data(id)
 }))
 
 

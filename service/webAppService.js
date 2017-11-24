@@ -1,6 +1,6 @@
 var fs =require('fs')//访问文件系统
-exports.get_test_data = function(){
-    var content = fs.readFileSync('./mock/test.json','utf-8')
+exports.get_chapter_data = function(){
+    var content = fs.readFileSync('./mock/reader/chapter.json','utf-8')
     return content
 }
 
@@ -11,6 +11,15 @@ exports.get_index_data = function(){
 
 exports.get_rank_data = function(){
     var content = fs.readFileSync('./mock/rank.json','utf-8')
+    return content
+}
+
+
+exports.get_chapter_content_data = function(id){
+    if(!id){
+        id = "1"
+    }
+    var content = fs.readFileSync('./mock/reader/data/data'+id+'.json','utf-8')
     return content
 }
 
