@@ -2,26 +2,26 @@
 html {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 body {
-  font-size: 0.42667rem;
+  font-size: 1.33547rem;
   text-align: left;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #e9dfc7;
 }
 
 .m-read-content {
-  font-size: 0.37333rem;
+  font-size: 1.16853rem;
   color: #555;
-  line-height: 0.82667rem;
-  padding: 0.4rem;
+  line-height: 2.58747rem;
+  padding: 1.252rem;
 }
 
 .m-read-content h4 {
-  font-size: 0.53333rem;
+  font-size: 1.66933rem;
   color: #736357;
   border-bottom: 1px solid #736357;
   letter-spacing: 2px;
@@ -31,10 +31,9 @@ body {
 
 .m-read-content p {
   text-indent: 2em;
-  /*首行缩进*/
   margin: 0.5em 0;
   letter-spacing: 0px;
-  line-height: 0.64rem;
+  line-height: 2em;
 }
 
 .m-artical-action .artical-action-mid {
@@ -47,19 +46,19 @@ body {
 
 .m-button-bar {
   width: 70%;
-  max-width: 21.33333rem;
+  max-width: 66.77333rem;
   /*防止因为在大的浏览器里面浏览，70%过短不够美观*/
-  padding: 0.13333rem;
+  padding: 0.41733rem;
   margin: 0 auto;
 }
 
 .m-button-bar .u-tab {
-  height: 0.90667rem;
-  margin: 0.26667rem auto;
-  line-height: 0.90667rem;
-  border-radius: 0.21333rem;
+  height: 2.83787rem;
+  margin: 0.83467rem auto;
+  line-height: 2.83787rem;
+  border-radius: 0.66773rem;
   border: 1px solid #858382;
-  font-size: 0.32rem;
+  font-size: 1.0016rem;
   background: #000;
   opacity: 0.9;
 }
@@ -72,7 +71,7 @@ body {
   color: #fff;
 }
 
-.m-button-bar .u-tab li::nth-child(2) {
+.m-button-bar .u-tab li:nth-child(2) {
   border-right: none;
 }
 
@@ -80,7 +79,7 @@ body {
   position: fixed;
   /*fixed默认没有z-index*/
   top: 0;
-  height: 1.33333rem;
+  height: 4.17333rem;
   width: 100%;
   z-index: 1;
   background-color: #000;
@@ -88,24 +87,24 @@ body {
 
 .top-nav .icon-back svg {
   position: absolute;
-  top: 0.37333rem;
-  left: 0.26667rem;
-  width: 0.61333rem;
-  height: 0.61333rem;
+  top: 1.16853rem;
+  left: 0.83467rem;
+  width: 1.91973rem;
+  height: 1.91973rem;
   fill: #fff;
 }
 
 .top-nav .nav-title {
   position: absolute;
-  top: 0.37333rem;
-  left: 1.12rem;
+  top: 1.33547rem;
+  left: 3.5056rem;
   color: #d5d5d6;
 }
 
 .pannel-position, .nav-pannel-bk, .nav-pannel {
   position: fixed;
-  bottom: 1.86667rem;
-  height: 3.6rem;
+  bottom: 5.84267rem;
+  height: 11.268rem;
   width: 100%;
 }
 
@@ -123,40 +122,40 @@ body {
 }
 
 .nav-pannel .child-mod {
-  padding: 0.13333rem 0.26667rem;
-  margin: 0.4rem;
+  padding: 0.41733rem 0.83467rem;
+  margin: 1.252rem;
 }
 
 .nav-pannel .child-mod span {
   display: inline-block;
-  padding-left: 0.26667rem;
-  padding-right: 0.53333rem;
+  padding-left: 0.83467rem;
+  padding-right: 1.66933rem;
 }
 
 .nav-pannel .child-mod .font-size-button {
-  font-size: 0.37333rem;
+  font-size: 1.16853rem;
   outline: none;
   background: none;
   border: 1px solid #8c8c8c;
   color: #fff;
-  border-radius: 0.4rem;
-  padding: 0.13333rem 1.06667rem;
+  border-radius: 1.252rem;
+  padding: 0.41733rem 3.33867rem;
 }
 
 .nav-pannel .child-mod .font-size-button:nth-child(2) {
   /*用“父亲 孩子:nth-child(n)”模式,CSS从1开始*/
-  margin-right: 0.26667rem;
+  margin-right: 0.83467rem;
 }
 
 .bk-container-setting, .bk-container-white, .bk-container-normal, .bk-container-gray, .bk-container-green, .bk-container-blue, .bk-container-night {
   position: relative;
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 0.4rem;
+  width: 2.504rem;
+  height: 2.504rem;
+  border-radius: 1.252rem;
   display: inline-block;
   /*为了让所有的圈圈排在同一行*/
-  vertical-align: -0.26667rem;
-  margin-right: 0.21333rem;
+  vertical-align: -0.83467rem;
+  margin-right: 0.66773rem;
 }
 
 .bk-container-white {
@@ -186,65 +185,41 @@ body {
 .bottom-nav-setting, .bottom-nav-bk, .bottom-nav {
   position: fixed;
   width: 100%;
-  height: 1.86667rem;
+  height: 5.84267rem;
   background: none;
   bottom: 0;
+  display: flex;
 }
 
 .bottom-nav-bk {
+  display: flex;
   background-color: #000;
   opacity: 0.9;
 }
 
 .svg-setting, .bottom-nav .item .item-wrap .icon-category svg, .bottom-nav .item .item-wrap .icon-font svg, .bottom-nav .item .item-wrap .icon-day svg, .bottom-nav .item .item-wrap .icon-night svg {
-  position: absolute;
-  bottom: 0.93333rem;
-  width: 0.61333rem;
-  height: 0.61333rem;
+  bottom: 2.92133rem;
+  width: 1.91973rem;
+  height: 1.91973rem;
   fill: currentColor;
 }
 
 .title-setting, .bottom-nav .item .item-wrap .category-title, .bottom-nav .item .item-wrap .font-title, .bottom-nav .item .item-wrap .day-title, .bottom-nav .item .item-wrap .night-title {
-  position: absolute;
   color: #fff;
-  bottom: 0.26667rem;
+  bottom: 0.83467rem;
 }
 
 .bottom-nav .item {
   color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex: 1;
 }
 
 .bottom-nav .item.active {
   color: #ecb131;
 }
-
-.bottom-nav .item .item-wrap .icon-category svg {
-  left: 1.68rem;
-}
-
-.bottom-nav .item .item-wrap .category-title {
-  left: 1.6rem;
-}
-
-.bottom-nav .item .item-wrap .icon-font svg {
-  left: 4.88rem;
-}
-
-.bottom-nav .item .item-wrap .font-title {
-  left: 4.8rem;
-}
-
-.bottom-nav .item .item-wrap .icon-day svg {
-  left: 8.08rem;
-}
-
-.bottom-nav .item .item-wrap .day-title, .bottom-nav .item .item-wrap .night-title {
-  left: 7.92rem;
-}
-
-.bottom-nav .item .item-wrap .icon-night svg {
-  left: 8.08rem;
-}
  
 
- /*# sourceMappingURL= index.css.map */
+ /*# sourceMappingURL= reader.css.map */

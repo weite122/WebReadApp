@@ -74,24 +74,24 @@
         	</ul>
         </div>
         <div class="bottom-nav-bk bottom_nav" style="display: none"></div>
-        <div id="bottom-nav" class="bottom-nav bottom_nav" style="display: none;"><!--没有必要写在CSS里面，因为显隐都是通过JS改变-->
-        	<div class="item" id="category-button">
+        <ul id="bottom-nav" class="bottom-nav bottom_nav" style="display: none;"><!--没有必要写在CSS里面，因为显隐都是通过JS改变-->
+        	<li class="item" id="category-button">
         		<div class="item-wrap">
         			<div class="icon-category">                
                         <svg><use xlink:href="#icon-category"></use></svg>
                     </div>
         			<div class="category-title">目录</div>
         		</div>
-        	</div>
-        	<div class="item" id="font-button">
+        	</li>
+        	<li class="item" id="font-button">
         		<div class="item-wrap">
         			<div class="icon-font">
                         <svg><use xlink:href="#icon-font"></use></svg>
                     </div>
         			<div class="font-title">字体</div>
         		</div>
-        	</div>
-        	<div class="item" id="night-button">
+        	</li>
+        	<li class="item" id="night-button">
         		<div class="item-wrap" id="day_icon" style="display: none">
         			<div class="icon-day">
                         <svg><use xlink:href="#icon-sun"></use></svg>
@@ -104,8 +104,8 @@
                     </div>
         			<div class="night-title">夜间</div>
         		</div>
-        	</div> 	
-        </div>
+        	</li> 	
+        </ul>
     	
     </div>
     <script src="static/script/zepto.js"></script>

@@ -1,19 +1,19 @@
 html {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
 
 }
 @function rem($px){
     $remSize: $px / 375 *10;
-    @return #{$remSize}rem;
+    @return #{$remSize*3.13}rem;
 }
 
 body {
     font-size: rem(16);
     text-align: left;
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: #e9dfc7;
 }
 .m-read-content {
@@ -29,10 +29,10 @@ body {
         margin: 0 0 1em 0;
     }
     p {
-        text-indent: 2em;/*首行缩进*/
+        text-indent: 2em;
         margin: 0.5em 0;
         letter-spacing: 0px;
-        line-height: rem(24);
+        line-height: 2em;
     }
 }
 
@@ -66,7 +66,7 @@ body {
             border-right: 1px solid #858382;
             text-align: center;
             color: #fff;
-            &::nth-child(2){
+            &:nth-child(2){
                 border-right: none;
             }
         }
@@ -90,7 +90,7 @@ body {
     }
     .nav-title {
         position: absolute;
-        top: rem(14);
+        top: rem(16);
         left: rem(42);
         color: #d5d5d6;
     }
@@ -177,24 +177,24 @@ body {
 .bottom-nav-setting {
     position: fixed;
     width: 100%;
-    height: rem(70);
+    height: 5.84267rem;
     background: none;
     bottom: 0;
+    display: flex;
 }
 .bottom-nav-bk {
     @extend .bottom-nav-setting;
+    display: flex;
     background-color: #000;
     opacity: 0.9;
 }
 .svg-setting{
-    position: absolute;
     bottom: rem(35);
     width: rem(23);
     height: rem(23);
     fill: currentColor;
 }
 .title-setting{
-    position: absolute;
     color: #fff;
     bottom: rem(10);
 }
@@ -202,6 +202,10 @@ body {
     @extend .bottom-nav-setting;
     .item{
         color:#fff;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex: 1;
         &.active{
             color: rgb(236, 177, 49);
         }
@@ -209,37 +213,30 @@ body {
             .icon-category{
                 svg{
                     @extend .svg-setting;
-                    left: rem(63);
                 }
             } 
             .category-title {
                 @extend .title-setting;
-                left: rem(60);
             }
             .icon-font {
                 svg{
                     @extend .svg-setting;
-                    left: rem(183);
                 }
             }
             .font-title {
                 @extend .title-setting;
-                left: rem(180);
             }
             .icon-day{
                 svg{
                     @extend .svg-setting;
-                    left: rem(303);
                 }
             } 
             .day-title {
                 @extend .title-setting;
-                left: rem(297);
             }
             .icon-night {
                 svg{
                     @extend .svg-setting;
-                    left: rem(303);
                 }
             }
             .night-title {
