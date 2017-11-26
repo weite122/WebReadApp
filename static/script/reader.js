@@ -45,7 +45,7 @@
     let initFontSize = Util.StorageGetter('font-size')
     initFontSize = parseInt(initFontSize)    
     if(!initFontSize){
-        initFontSize = 14 * window.devicePixelRatio 
+        initFontSize = 14
     }
     RootContainer.css('font-size',initFontSize)
     
@@ -193,7 +193,7 @@
         })
 
         $('#large-button').click(function(){
-            if(initFontSize > 20 * window.devicePixelRatio){
+            if(initFontSize > 20){
                 return
             }
             initFontSize += 1
@@ -201,7 +201,7 @@
             Util.StorageSetter('font-size',initFontSize)
         })
         $('#small-button').click(function(){
-            if(initFontSize < 12 * window.devicePixelRatio){
+            if(initFontSize < 12){
                 return
             }
             initFontSize -= 1

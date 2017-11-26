@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  font-size: 1.33547rem;
+  font-size: 16px;
   text-align: left;
   width: 100%;
   overflow-x: hidden;
@@ -14,14 +14,14 @@ body {
 }
 
 .m-read-content {
-  font-size: 1.16853rem;
+  font-size: 14px;
   color: #555;
-  line-height: 2.58747rem;
-  padding: 1.252rem;
+  line-height: 31px;
+  padding: 15px;
 }
 
 .m-read-content h4 {
-  font-size: 1.66933rem;
+  font-size: rem(20);
   color: #736357;
   border-bottom: 1px solid #736357;
   letter-spacing: 2px;
@@ -46,19 +46,19 @@ body {
 
 .m-button-bar {
   width: 70%;
-  max-width: 66.77333rem;
+  max-width: 800px;
   /*防止因为在大的浏览器里面浏览，70%过短不够美观*/
-  padding: 0.41733rem;
+  padding: 5px;
   margin: 0 auto;
 }
 
 .m-button-bar .u-tab {
-  height: 2.83787rem;
-  margin: 0.83467rem auto;
-  line-height: 2.83787rem;
-  border-radius: 0.66773rem;
+  height: 34px;
+  margin: 10px auto;
+  line-height: 34px;
+  border-radius: 8px;
   border: 1px solid #858382;
-  font-size: 1.0016rem;
+  font-size: 12px;
   background: #000;
   opacity: 0.9;
 }
@@ -79,7 +79,7 @@ body {
   position: fixed;
   /*fixed默认没有z-index*/
   top: 0;
-  height: 4.17333rem;
+  height: 50px;
   width: 100%;
   z-index: 1;
   background-color: #000;
@@ -87,24 +87,24 @@ body {
 
 .top-nav .icon-back svg {
   position: absolute;
-  top: 1.16853rem;
-  left: 0.83467rem;
-  width: 1.91973rem;
-  height: 1.91973rem;
+  top: 14px;
+  left: 10px;
+  width: 23px;
+  height: 23px;
   fill: #fff;
 }
 
 .top-nav .nav-title {
   position: absolute;
-  top: 1.33547rem;
-  left: 3.5056rem;
+  top: 16px;
+  left: 42px;
   color: #d5d5d6;
 }
 
 .pannel-position, .nav-pannel-bk, .nav-pannel {
   position: fixed;
-  bottom: 5.84267rem;
-  height: 11.268rem;
+  bottom: 70px;
+  height: 135px;
   width: 100%;
 }
 
@@ -122,40 +122,39 @@ body {
 }
 
 .nav-pannel .child-mod {
-  padding: 0.41733rem 0.83467rem;
-  margin: 1.252rem;
+  padding: 5px 10px;
+  margin: 15px;
 }
 
 .nav-pannel .child-mod span {
   display: inline-block;
-  padding-left: 0.83467rem;
-  padding-right: 1.66933rem;
+  padding-left: 10px;
+  padding-right: 20px;
 }
 
 .nav-pannel .child-mod .font-size-button {
-  font-size: 1.16853rem;
+  font-size: 14px;
   outline: none;
   background: none;
   border: 1px solid #8c8c8c;
   color: #fff;
-  border-radius: 1.252rem;
-  padding: 0.41733rem 3.33867rem;
+  border-radius: 15px;
+  padding: 5px 40px;
 }
 
 .nav-pannel .child-mod .font-size-button:nth-child(2) {
-  /*用“父亲 孩子:nth-child(n)”模式,CSS从1开始*/
-  margin-right: 0.83467rem;
+  margin-right: 10px;
 }
 
 .bk-container-setting, .bk-container-white, .bk-container-normal, .bk-container-gray, .bk-container-green, .bk-container-blue, .bk-container-night {
   position: relative;
-  width: 2.504rem;
-  height: 2.504rem;
-  border-radius: 1.252rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
   display: inline-block;
   /*为了让所有的圈圈排在同一行*/
-  vertical-align: -0.83467rem;
-  margin-right: 0.66773rem;
+  vertical-align: -10px;
+  margin-right: 8px;
 }
 
 .bk-container-white {
@@ -185,7 +184,7 @@ body {
 .bottom-nav-setting, .bottom-nav-bk, .bottom-nav {
   position: fixed;
   width: 100%;
-  height: 5.84267rem;
+  height: 60px;
   background: none;
   bottom: 0;
   display: flex;
@@ -198,15 +197,15 @@ body {
 }
 
 .svg-setting, .bottom-nav .item .item-wrap .icon-category svg, .bottom-nav .item .item-wrap .icon-font svg, .bottom-nav .item .item-wrap .icon-day svg, .bottom-nav .item .item-wrap .icon-night svg {
-  bottom: 2.92133rem;
-  width: 1.91973rem;
-  height: 1.91973rem;
+  bottom: 35px;
+  width: 23px;
+  height: 23px;
   fill: currentColor;
 }
 
 .title-setting, .bottom-nav .item .item-wrap .category-title, .bottom-nav .item .item-wrap .font-title, .bottom-nav .item .item-wrap .day-title, .bottom-nav .item .item-wrap .night-title {
   color: #fff;
-  bottom: 0.83467rem;
+  bottom: 10px;
 }
 
 .bottom-nav .item {
@@ -219,6 +218,10 @@ body {
 
 .bottom-nav .item.active {
   color: #ecb131;
+}
+
+.bottom-nav .item .item-wrap {
+  text-align: center;
 }
  
 

@@ -3,22 +3,8 @@
 <head>
 	<title>Reader</title>
 	<meta charset="utf-8">
-	<script>
-		var scale = 1 / window.devicePixelRatio // 1\2\3
-		document.write(`
-		  <meta name="viewport"
-			content="initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no"> 
-		  `)
-	  </script>
-	  <script>
-		var width = document.documentElement.clientWidth / window.devicePixelRatio
-		var css = `
-		html{
-		  font-size: ${width / 10 * window.devicePixelRatio}px;
-		}
-		`
-		document.write(`<style>${css}</style>`)
-	  </script>
+	<meta name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" type="text/css" href="static/css/reset.css">
 	<link rel="stylesheet" href="static/css/reader.css">

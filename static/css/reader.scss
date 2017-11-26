@@ -4,23 +4,19 @@ html {
     overflow: hidden;
 
 }
-@function rem($px){
-    $remSize: $px / 375 *10;
-    @return #{$remSize*3.13}rem;
-}
 
 body {
-    font-size: rem(16);
+    font-size: 16px;
     text-align: left;
     width: 100%;
     overflow-x: hidden;
     background-color: #e9dfc7;
 }
 .m-read-content {
-    font-size: rem(14);
+    font-size: 14px;
     color: #555;
-    line-height: rem(31);
-    padding: rem(15);
+    line-height: 31px;
+    padding: 15px;
     h4 {
         font-size: rem(20);
         color: #736357;
@@ -48,16 +44,16 @@ body {
 
 .m-button-bar {
     width: 70%;
-    max-width: rem(800);/*防止因为在大的浏览器里面浏览，70%过短不够美观*/
-    padding: rem(5);
+    max-width: 800px;/*防止因为在大的浏览器里面浏览，70%过短不够美观*/
+    padding: 5px;
     margin: 0 auto;
     .u-tab {
-        height: rem(34);
-        margin: rem(10) auto;
-        line-height: rem(34); 
-        border-radius: rem(8);
+        height: 34px;
+        margin: 10px auto;
+        line-height: 34px; 
+        border-radius: 8px;
         border: 1px solid #858382;
-        font-size: rem(12);
+        font-size: 12px;
         background: #000;
         opacity: 0.9;
         li {
@@ -76,22 +72,22 @@ body {
 .top-nav {
     position: fixed;/*fixed默认没有z-index*/
     top: 0;
-    height: rem(50);
+    height: 50px;
     width: 100%;                       
     z-index: 1;
     background-color: #000;
     .icon-back svg{
         position: absolute;
-        top: rem(14);
-        left: rem(10);
-        width: rem(23);
-        height: rem(23);
+        top: 14px;
+        left: 10px;
+        width: 23px;
+        height: 23px;
         fill: #fff;
     }
     .nav-title {
         position: absolute;
-        top: rem(16);
-        left: rem(42);
+        top: 16px;
+        left: 42px;
         color: #d5d5d6;
     }
 }
@@ -99,8 +95,8 @@ body {
 
 .pannel-position{
     position: fixed;
-    bottom: rem(70);
-    height: rem(135);
+    bottom: 70px;
+    height: 135px;
     width: 100%;
 }
 
@@ -116,23 +112,23 @@ body {
     color: #fff;
     z-index: 3;
     .child-mod {
-        padding: rem(5) rem(10);
-        margin: rem(15);
+        padding: 5px 10px;
+        margin: 15px;
         span {
             display: inline-block; 
-            padding-left: rem(10);
-            padding-right: rem(20);
+            padding-left: 10px;
+            padding-right: 20px;
         }
         .font-size-button {
-            font-size: rem(14);
+            font-size: 14px;
             outline: none;
             background: none;
             border: 1px solid #8c8c8c;
             color: #fff;
-            border-radius: rem(15);
-            padding: rem(5) rem(40);
-            &:nth-child(2){/*用“父亲 孩子:nth-child(n)”模式,CSS从1开始*/
-                margin-right: rem(10);
+            border-radius: 15px;
+            padding: 5px 40px;
+            &:nth-child(2){
+                margin-right: 10px;
             }
         }
     }
@@ -141,12 +137,12 @@ body {
 
 .bk-container-setting{
     position: relative;
-    width: rem(30);
-    height: rem(30);
-    border-radius: rem(15);
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
     display: inline-block;/*为了让所有的圈圈排在同一行*/
-    vertical-align: rem(-10);
-    margin-right: rem(8);
+    vertical-align: -10px;
+    margin-right: 8px;
 }
 
 .bk-container-white {
@@ -177,7 +173,7 @@ body {
 .bottom-nav-setting {
     position: fixed;
     width: 100%;
-    height: 5.84267rem;
+    height: 60px;
     background: none;
     bottom: 0;
     display: flex;
@@ -189,14 +185,14 @@ body {
     opacity: 0.9;
 }
 .svg-setting{
-    bottom: rem(35);
-    width: rem(23);
-    height: rem(23);
+    bottom: 35px;
+    width: 23px;
+    height: 23px;
     fill: currentColor;
 }
 .title-setting{
     color: #fff;
-    bottom: rem(10);
+    bottom: 10px;
 }
 .bottom-nav {
     @extend .bottom-nav-setting;
@@ -210,6 +206,7 @@ body {
             color: rgb(236, 177, 49);
         }
         .item-wrap{
+            text-align: center;
             .icon-category{
                 svg{
                     @extend .svg-setting;
