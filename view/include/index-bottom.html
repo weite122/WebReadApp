@@ -7,13 +7,11 @@
         </p>
     </div>
     <ul class="banner-h5__list">
-        <div>
-            <li v-for="item in topic">
-                <div class="banner-h5__cover">
-                    <img alt="{{ item.title }}" v-bind:src="item.ad_pic_url">
-                </div>
-            </li>
-        </div>
+        <li v-for="item in topic">
+            <div class="banner-h5__cover">
+                <img alt="{{ item.title }}" v-bind:src="item.ad_pic_url">
+            </div>
+        </li>
     </ul>
     <div class="channel-h5__footer">
         <a class="btn-h5__more">更多精彩专题&gt;&gt;</a>

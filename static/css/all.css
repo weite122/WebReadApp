@@ -45,6 +45,13 @@
     background: url(http://image.read.duokan.com/mfsv2/download/s010/p01O5K5DzsAZ/2ZODzjwkRQh7l3.png) no-repeat center;
     background-size: 22px;    
 }
+
+.Swipe-tab {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
 .Swipe-tab i {
     position: absolute;
     left: 0;
@@ -441,11 +448,7 @@
     height: 22px;
     width: 22px;
 }
-/*index-swiper*/
-.swiper-container {
-    width: 360px;
-    height: 130px;
-}  
+
 /* index样式 */
 #app {
     height: 100%;
