@@ -48,23 +48,29 @@ app.use(controller.get('/reader',function*(){
 
 app.use(controller.get('/category',function*(){ 
     this.set('Cache-Control','no-cache')
-    this.body = yield render('category',{title:'分类页面'})
+    this.body = yield render('category', {title: '分类', nav: '分类'})
 }))
 
 app.use(controller.get('/male',function*(){ 
     this.set('Cache-Control','no-cache')
-    this.body = yield render('male',{title:'男性频道'})
+    this.body = yield render('male', {title: '男榜', nav: '男生频道'})
 }))
 
 app.use(controller.get('/female',function*(){ 
     this.set('Cache-Control','no-cache')
-    this.body = yield render('female',{title:'女性频道'})
+    this.body = yield render('female', {title: '女榜', nav: '女生频道'})
 }))
 
 app.use(controller.get('/rank',function*(){ 
     this.set('Cache-Control','no-cache')
-    this.body = yield render('rank',{title:'排行'})
+    this.body = yield render('rank', {title: '排行', nav: '排行'})
 }))
+
+
+app.use(controller.get('/day', function*(){
+	this.set('Cache-Control', 'no-cache');
+	this.body = yield render('day', {title: '日签到', nav: '签到'});
+}));
 
 app.use(controller.get('/book',function*(){ 
     this.set('Cache-Control','no-cache')

@@ -24,6 +24,35 @@ exports.get_chapter_content_data = function(id){
         return fs.readFileSync('./mock/mock/book/18218.json','utf-8');
     }
 }
+exports.get_category_data = function(){
+    var content = fs.readFileSync('./mock/category.json', 'utf-8');
+    return content;
+}
+
+exports.get_bookbacket_data = function(){
+    var content = fs.readFileSync('./mock/bookbacket.json', 'utf-8');
+    return content;
+}
+
+exports.get_female_data = function(){
+    var content = fs.readFileSync('./mock/channel/female.json', 'utf-8');
+    return content;
+}
+
+exports.get_male_data = function(){
+    var content = fs.readFileSync('./mock/channel/male.json', 'utf-8');
+    return content;
+}
+
+exports.get_check_data = function(){
+    var content = fs.readFileSync('./mock/check.json', 'utf-8');
+    return content;
+}
+
+exports.get_catedetail_data = function(){
+    var content = fs.readFileSync('./mock/catedetail.json', 'utf-8');
+    return content;
+}
 
 exports.get_book_data = function(id){
     if(!id){
