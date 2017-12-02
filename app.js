@@ -146,7 +146,7 @@ app.use(controller.get('/ajax/chapter_data', function*(){
 
 
 
-app.listen(3001)
+app.listen(3007)
 console.log('koa server is started!')
 
 

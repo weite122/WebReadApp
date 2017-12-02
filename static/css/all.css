@@ -453,7 +453,7 @@
 #app {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 .container{
     height: 100%;
